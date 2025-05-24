@@ -1,0 +1,79 @@
+.navbar {
+    width: 100vw;
+    height: 60px;
+    background-color: #2563EB;
+    background-color: white;
+    filter: drop-shadow(10px);
+    /* position: fixed;
+    top: 0px;
+    left: 0px; */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: white;
+  
+    gap: 10px;
+    cursor: pointer;
+}
+
+.links_container {
+    /* width: 300px; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 50px;
+}
+.active {
+    color: #2563EB;
+      color: rgb(92, 27, 134);
+    font-weight: bolder;
+    font-size: 15px;
+    width: 70px;
+}
+
+
+.active:hover {
+    color: #2563EB;
+    color: rgb(92, 27, 134);
+    font-weight: 900;
+    font-size: 15px;
+    text-decoration:  underline  ;
+    text-decoration-thickness: 2px;
+    text-underline-offset: 4px; /* Adjust gap here */
+    /* text-decoration-color: black; */
+    
+}
+
+.in_active {
+    color: black;
+    font-weight: 500;
+    font-size: 15px;
+     width: 70px;
+    /* background-color: red; */
+    
+}
+
+.in_active:hover {
+    color: black;
+    font-size: 15px;
+     text-decoration: underline;
+      text-decoration:  underline  ;
+    text-decoration-thickness: 2px;
+    text-underline-offset:4px; /* Adjust gap here */
+}
+
+
+.logo_container {
+    width: max-content;
+    /* background-color: red; */
+    padding: 0px 57px;
+    position: relative;
+    
+}
+.logo {
+    font-family: "Tilt Prism", sans-serif;
+    font-size: 24px;
+    font-weight: 900;
+    color:black;
+}
+

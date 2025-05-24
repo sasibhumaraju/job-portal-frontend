@@ -1,0 +1,99 @@
+.applies {
+    width: calc(100% - 60px);
+    height: max-content;
+    box-shadow: rgba(182, 182, 185, 0.25) -2px 2px 0px -1px, rgba(80, 80, 80, 0.3) 1px 1px 3px -1px;
+    border-bottom-width: 1px;
+    border-bottom-style: solid;
+    border-bottom-color: rgb(237, 235, 233);
+    background-color: white;
+    padding: 30px 30px;
+}
+.heading {
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 30px;
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    display: flex;
+    justify-content: start;
+    align-items: center;
+}
+.body {
+    font-size: 16px;
+    font-weight: 500;
+    margin-bottom: 10px;
+    /* background-color: red; */
+    display: flex;
+    flex-wrap: wrap;
+}
+.none_applied {
+    font-size: 14px;
+    font-weight: 500;
+    margin-bottom: 10px;
+    font-style: italic;
+}
+
+.exp_card {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  position: relative;
+}
+.exp_card .icon {
+  min-width: 55px;
+  min-height: 55px;
+  background-color: rgb(240, 240, 240);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 100%;
+}
+.exp_card .body {
+  display: flex;
+  flex-direction: column;
+  padding-left: 35px;
+}
+.exp_card .company {
+  font-size: 16px;
+  font-weight: bold;
+  margin-bottom: 3px;
+}
+.exp_card .role {
+  font-size: 14px;
+  font-weight: 500;
+  margin-bottom: 3px;
+}
+.exp_card .comment {
+  font-size: 14px;
+  font-weight: 500;
+}
+.exp_card .details {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  font-size: 14px;
+  font-weight: 900;
+  color: rgb(92, 27, 134) ;
+  cursor: pointer;
+  position: absolute;
+  top: 0px;
+  right: 10px;
+}
+.exp_card .details:hover {
+    color: rgb(92, 27, 134);
+    font-weight: 900;
+    font-size: 14px;
+    text-decoration:  underline  ;
+    text-decoration-thickness: 2px;
+    text-underline-offset: 4px; 
+}
+.divider {
+    width: 100%;
+    height: 1px;
+    background-color: rgb(213, 213, 213);
+    margin: 20px 0px;
+}
+
