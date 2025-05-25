@@ -32,7 +32,7 @@ function App() {
   
 
   return (<>
-     {isTooSmall ? <div className='small_screen'>Hey! sweet heart❤️ i know you want to see in small screens, but i promise this feature will be available within 24 hours, until please have some patience naaaa...</div> :  <div className='app'>
+     {isTooSmall ? <div className='small_screen'>Hey!🫰 i know you want to see in small screens, but i promise this feature will be available within 24 hours, until please have some patience naaaa...</div> :  <div className='app'>
 
       { user === undefined? 
         <Loading/> :
