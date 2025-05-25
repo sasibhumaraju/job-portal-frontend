@@ -12,16 +12,27 @@ import Loading from './pages/loading';
 
 function App() {
 
-  const [user, setUser] = useState(undefined);
+    const [user, setUser] = useState(undefined);
+    const [isTooSmall, setIsTooSmall] = useState(window.innerWidth < 500);
+
+   
 
   useEffect(()=>{
     const u = getItem("user")
     u == null? setUser(null) : setUser(u);
+
+     const handleResize = () => {
+      setIsTooSmall(window.innerWidth < 500);
+    };
+     window.addEventListener('resize', handleResize);
+
+    // Clean up listener on unmount
+    return () => window.removeEventListener('resize', handleResize);
   },[])
   
 
-  return (
-    <div className='app'>
+  return (<>
+     {isTooSmall ? <div className='small_screen'>Hey! sweet heart❤️ i know you want to see in small screens, but i promise this feature will be available within 24 hours, until please have some patience naaaa...</div> :  <div className='app'>
 
       { user === undefined? 
         <Loading/> :
@@ -45,7 +56,9 @@ function App() {
       </Routes>
       </> }
       <Footer/>
-    </div>
+    </div>}
+  </>
+   
   )
 }
 

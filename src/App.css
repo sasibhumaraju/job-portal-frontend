@@ -6,3 +6,15 @@
   overflow: scroll;
   color: black;
 }
+
+.small_screen {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  background-color: black;
+  height: 100vh;
+  width: calc(100vw - 40px);
+  font-weight: 100;
+  
+}
