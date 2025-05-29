@@ -1,11 +1,12 @@
 .jobs {
-    min-height: 100vh;
+    min-height: calc(100vh - 60px);
+    /* height: calc(100vh - 60px); */
+    width: calc(100% - 60px);
+    padding: 30px 30px;
     background-color: white;
-    box-sizing: border-box;
     display: flex;
     flex-direction: column;
-    word-spacing: 2px;
-   
+    position: relative;
 }
 
 .image_container {
@@ -45,28 +46,24 @@
 }
 
 .header_container {
-    position: absolute;
-    width: calc(100% - 60px);
-    margin: 0px 30px;
-    margin-bottom: 20px;
-    overflow: hidden;
-    top: 0px;
-    left: 0px;
+    /* background-color: red; */
+     background-image: linear-gradient(94.89deg, rgba(235, 240, 245, 1) 43.87%, rgba(247, 248, 250, 1));
+
     display: flex;
     justify-content:center;
     align-items: start;
     flex-direction: column;
-    height: 100%;
     width: calc(100% - 40px);
     gap: 30px;
     padding: 0px 20px;
-}
+    height: 100px;
 
-.header {
-    font-weight: 900;
-    font-size: 40px;
-    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
-
+    border-radius: 5px;
+    z-index: 999;
+    position: sticky;
+    top: 0px;
+    border-bottom: 20px;
+    /* outline: 1px solid rgba(0, 0, 0, 0.1); */
 }
 
 .tail {
@@ -107,90 +104,110 @@ form {
 }
 
 .tail input {
+    width: calc(100% - 30px);
     border: none;
-    outline: none;
-    border-radius: 3px;
-    height: 43px;
-    width: 44%;
-    color: aliceblue;
+    border-radius: 10px;
+    height: 40px;
     padding: 0px 15px;
-    font-size: 15px;
+    font-size: 14px;
     color: black;
     background-color: white;
-    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.4);
+    margin: 10px 0px;
+    outline: 1.5px solid rgba(0, 0, 0, 0.1);
 }
 
 .tail input::placeholder {
-  color: #888;
-  font-style: italic;
   font-size: 14px;
+  color: black;
+  font-weight: 500;
 }
 
 .jobs_list_container {
-    width: calc(100% - 80px);
-    margin: 40px 48px;
+    width: calc(100% - 0px);
+   
+    /* margin: 40px 48px; */
+    /* background-color: red; */
+
 }
 
-/* .job_list {
-
-} */
+.job_list {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding-top: 20px;
+}
 
 .job_card {
     width: calc(100% - 60px);
     padding: 30px 30px;
     min-height: max-content;
-    box-shadow: rgba(182, 182, 185, 0.25) -2px 2px 0px -1px, rgba(80, 80, 80, 0.3) 1px 1px 3px -1px;
-    border-bottom-width: 1px;
-    border-bottom-style: solid;
-    border-bottom-color: rgb(237, 235, 233);
     background-color: white;
-    gap: 10px;
+    gap: 20px;
     display: flex;
     justify-content: start;
     align-items: start;
     flex-direction: column;
     position: relative;
+    border-radius: 10px;
+    outline: 1px solid rgba(0, 0, 0, 0.1);
 }
 
 .job_card:hover {
-    background-color: rgb(243, 243, 243);
+    /* background-color: rgb(243, 243, 243); */
 }
 
-.job_card:hover::after {
-    top: 0px;
-    left: 0px;
+.job_card_heading {
+    /* background-color: red; */
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: start;
+    align-items: center;
+    gap: 8px;
+    position: relative;
+}
+.job_card_heading_tail {
+    display: flex;
+    justify-content: center;
+    align-items: start;
+    flex-direction: column;
+}
+.share {
     position: absolute;
-    width: 4px;
+    right: 0px;
     height: 100%;
-    background-color: rgb(92, 27, 134);
-    content: "";
-}
-
-.company_name {
-    font-weight: 500;
-    font-size: 14px;
+    width: 50px;
+    cursor: pointer;
+    border-radius: 10px;
+    /* background-color: red; */
+    color: rgba(0, 0, 255,0.6);
+    color: rgba(92, 27, 134,0.7);
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 7px;
-    flex-direction: row;
-    font-weight: bold;
+}
+.company_name {
+    font-weight: 900;
+    font-size: 14px;
+    color: rgba(0, 0, 0, 0.5);
+   
 }
 
 .designation {
-    font-weight: 600;
-    font-size: 20px;
+    font-weight: 900;
+    font-size: 16px;
+    /* background-color: red; */
 }
 
 .comment {
-     font-weight: 500;
+    font-weight: normal;
     font-size: 14px;
 }
 
 .posted_by {
     font-weight: 500;
     font-size: 14px;
-    font-style: italic;
+    /* font-style: italic; */
 }
 
 .see_details {
@@ -199,10 +216,22 @@ form {
     color:  rgb(92, 27, 134);
     cursor: pointer;
     font-weight: bold;
+
+     width: 180px;
+    height: 38px;
+    font-size: 14px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    font-weight: 900;
+    border-radius: 5px;
+    cursor: pointer;
+    background-color: rgb(92, 27, 134);
 }
 
 .see_details:hover {
-     color: rgb(92, 27, 134);
+     /* color: rgb(92, 27, 134); */
     
    
     text-decoration:  underline  ;

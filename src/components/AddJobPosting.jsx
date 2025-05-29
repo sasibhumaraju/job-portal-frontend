@@ -51,6 +51,7 @@ function AddJobPosting({toggleAddJobPosting, toggleEditJobPosting, jobPostingObj
 
   return (
     <div className={style.add_job_posting}>
+         <div className={style.type_heading}> {mode=="edit"? "Edit Job Posting 👇" : "Add New Job Posting 👇" }</div>
        { mode=="edit" && <div className={style.delete} onClick={()=>deleteJobPosting(jobPostingObject.id)}> <MdOutlineDeleteOutline size={20} /> Delete</div>}
         <form className={style.form_container} onSubmit={onSubmit}>
             <input required pattern="^[a-zA-Z0-9\s.,&'-]{2,50}$"  title="Company name should be 2-50 characters and can include letters, numbers, and symbols like .,&'-" type='text' name='company' id='company' placeholder='Enter job posting company name' value={jobPosting.companyName} onChange={(e)=>{ setJobPosting({...jobPosting, "companyName": e.target.value })}} ></input>

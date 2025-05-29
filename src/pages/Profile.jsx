@@ -16,6 +16,12 @@ import { getExperience, getExperienceByUser } from '../api/Experiences';
 import Applies from '../components/Applies';
 import JobPosting from '../components/JobPosting';
 import { getUserByID } from '../api/users';
+import { RxPerson } from 'react-icons/rx';
+import { HiOutlineMail } from 'react-icons/hi';
+import { CiMail } from 'react-icons/ci';
+import { GoMail } from 'react-icons/go';
+import { BsPhone } from 'react-icons/bs';
+import { PiBagLight, PiCoffeeLight, PiCoffeeThin } from 'react-icons/pi';
 
 function Profile() {
 
@@ -87,16 +93,17 @@ function Profile() {
               <div className={style.data_card}>
                 <div className={style.heading}>Bio data</div>
                 <div className={style.body}>
-                  <div className={style.snip}> <span> <IoPersonCircle size={26} /> </span> <div>{user.name}</div></div>
-                  <div className={style.snip}> <span> <ImMail4 size={22}/> </span>  <div>{user.email}</div></div>
-                  <div className={style.snip}> <span> <SiTelegram  size={22}/></span>  <div>{user.phone}</div></div>
-                  <div className={style.snip}> <span>  <TbCircleLetterRFilled  size={26} /> </span>  <div>{user.role}</div></div>
+                  <div className={style.snip}> <RxPerson size={17} />  {user.name}</div>
+                  <div className={style.snip}>  <GoMail  size={16} />  {user.email}</div>
+                  <div className={style.snip}>  <BsPhone size={16} />  {user.phone}</div>
+                  <div className={style.snip}>  <PiCoffeeLight size={17}  />  {user.role==="EMPLOYER"? "Employer":"Job seeker"}</div>
                 </div>
               </div>
 
 
 {/* ---------------           Experience section -----------------            */}
               <div className={style.data_card}>
+                
                 <div className={style.heading}>Most recent experience { currentUser && currentUser.id == userID && !showExpForm && <div  className={style.add} onClick={()=>toggleExpForm(!showExpForm)}><IoMdAdd size={23} /> Add</div>} </div>
                 { currentUser && currentUser.id == userID && showExpForm &&
                   <AddExperience toggleExpForm={toggleExpForm} mode={"add"}/>
@@ -111,9 +118,9 @@ function Profile() {
 
                             {!showExpEditForm[i].i && 
                               <>
-                              <div className={style.icon}> <MdOutlineLocalPostOffice size={23}/> </div>
+                              {/* <div className={style.icon}> <MdOutlineLocalPostOffice size={23}/> </div> */}
                               <div className={style.body}>
-                                  <div className={style.company}> {e.companyName}</div>
+                                  <div className={style.company}> <PiBagLight size={18} /> {e.companyName}</div>
                                   <div className={style.role}> {e.designation}</div>
                                   <div className={style.comment}> { e.yearsWorked + " years experienced, " + e.comment} </div>
                               </div>   

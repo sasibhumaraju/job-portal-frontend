@@ -10,6 +10,8 @@ import AddJobPosting from './AddJobPosting'
 import { IoMdAdd } from 'react-icons/io'
 import { getJobsByEmployerID } from '../api/jobs'
 import { MdOutlineLocalPostOffice, MdWorkOutline } from 'react-icons/md'
+import { PiBagLight } from 'react-icons/pi'
+import { BiMessageSquare } from 'react-icons/bi'
 
 function JobPosting({userID}) {
 
@@ -39,9 +41,9 @@ function JobPosting({userID}) {
                         jobPostings.length>0 && jobPostings.map((e,i)=>{
                             return <> <div className={style.exp_card} key={e.id}>
                                     <>
-                                        <div className={style.icon}> <MdWorkOutline size={23} />  </div>
+                                        {/* <div className={style.icon}> <MdWorkOutline size={23} />  </div> */}
                                         <div className={style.body}>
-                                            <div className={style.company}> {e.companyName}</div>
+                                            <div className={style.company}><BiMessageSquare size={18} /> {e.companyName}</div>
                                             <div className={style.role}> {e.designation}</div>
                                             <div className={style.comment}> { e.comment} </div>
                                         </div>   

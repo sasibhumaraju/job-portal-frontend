@@ -13,7 +13,7 @@ import Loading from './pages/loading';
 function App() {
 
     const [user, setUser] = useState(undefined);
-    const [isTooSmall, setIsTooSmall] = useState(window.innerWidth < 500);
+    const [isTooSmall, setIsTooSmall] = useState(window.innerWidth < 750);
 
    
 
@@ -22,7 +22,7 @@ function App() {
     u == null? setUser(null) : setUser(u);
 
      const handleResize = () => {
-      setIsTooSmall(window.innerWidth < 500);
+      setIsTooSmall(window.innerWidth < 750);
     };
      window.addEventListener('resize', handleResize);
 
@@ -32,12 +32,15 @@ function App() {
   
 
   return (<>
-     {isTooSmall ? <div className='small_screen'>Hey!🫰 i know you want to see in small screens, but i promise this feature will be available within 24 hours, until please have some patience naaaa...</div> :  <div className='app'>
+     {isTooSmall ? <div className='small_screen'>Hey!🫰 i know you want to see in small screens, but i promise this feature will be available within 24 hours, until please have some patience naaaa...</div> : 
+      <div className='app'>
 
       { user === undefined? 
         <Loading/> :
       <>
+      <div className='home'>
       <Navbar></Navbar>
+      <div className='pages'>
       <Routes>
 
         <Route path='/' element={<Navigate to="/jobs"/>} />
@@ -54,9 +57,13 @@ function App() {
         
           <Route path='*' element={<Navigate to="/jobs" replace />} />
       </Routes>
-      </> }
-      <Footer/>
-    </div>}
+      </div>
+
+      </div>
+           </> }
+      {/* <Footer/> */}
+    </div>
+     } 
   </>
    
   )

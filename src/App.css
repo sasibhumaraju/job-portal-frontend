@@ -16,5 +16,17 @@
   height: 100vh;
   width: calc(100vw - 40px);
   font-weight: 100;
-  
+}
+
+.home {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: row;
+  /* background-color: red; */
+}
+
+.pages {
+  width: calc(100vw - 250px);
+  overflow-y: scroll;
 }

@@ -2,11 +2,10 @@
 .data_card {
   width: calc(100% - 60px);
   height: max-content;
-   box-shadow: rgba(182, 182, 185, 0.25) -2px 2px 0px -1px, rgba(80, 80, 80, 0.3) 1px 1px 3px -1px;
-    border-bottom-width: 1px;
-    border-bottom-style: solid;
-    border-bottom-color: rgb(237, 235, 233);
+   border-radius: 10px;
+  outline: 1px solid rgba(0, 0, 0, 0.1);
     background-color: white;
+    /* background-color: red; */
   padding: 30px 30px;
 }
 .data_card .heading {
@@ -90,21 +89,25 @@
 .exp_card .body {
   display: flex;
   flex-direction: column;
-  padding-left: 35px;
+  padding-left: 0px;
 }
 .exp_card .company {
   font-size: 16px;
   font-weight: bold;
-  margin-bottom: 3px;
+  margin-bottom: 8px;
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  gap: 8px;
 }
 .exp_card .role {
   font-size: 14px;
-  font-weight: 500;
-  margin-bottom: 3px;
+  margin-bottom: 8px;
+  font-weight: bold;
 }
 .exp_card .comment {
   font-size: 14px;
-  font-weight: 500;
+  font-weight: normal;
 }
 .exp_card .edit {
   display: flex;

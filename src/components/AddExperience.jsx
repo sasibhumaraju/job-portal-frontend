@@ -51,6 +51,7 @@ function AddExperience({toggleExpForm, toggleExpEditForm, expObject, mode, loadU
 
   return (
     <div className={style.add_experience}>
+        <div className={style.type_heading}> {mode=="edit"? "Edit Experience 👇" : "Add New Experience 👇" }</div>
        { mode=="edit" && <div className={style.delete} onClick={()=>deleteExp(expObject.id)}> <MdOutlineDeleteOutline size={20} /> Delete</div>}
         <form className={style.form_container} onSubmit={onSubmit}>
             <input required pattern="^[a-zA-Z0-9\s.,&'-]{2,50}$"  title="Company name should be 2-50 characters and can include letters, numbers, and symbols like .,&'-" type='text' name='company' id='company' placeholder='Enter company name' value={wExp.companyName} onChange={(e)=>{ setWExp({...wExp, "companyName": e.target.value })}} ></input>
