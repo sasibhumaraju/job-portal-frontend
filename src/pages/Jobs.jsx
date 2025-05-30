@@ -7,12 +7,13 @@ import { Outlet, useNavigate } from 'react-router-dom'
 import { BiMessageSquare } from 'react-icons/bi';
 import { LuShare2 } from 'react-icons/lu';
 import toast from 'react-hot-toast';
+import Loading from './loading';
 
 function Jobs() {
 
   const URL=import.meta.env.VITE_SELF_URL;
 
-  const [jobs,setJobs] = useState([]);
+  const [jobs,setJobs] = useState(null);
   const [keyword, setKeyword] = useState("");
   const navigate = useNavigate()
   
@@ -55,7 +56,8 @@ function Jobs() {
       
       <div className={style.jobs_list_container}>
         <div className={style.job_list}>
-          {jobs.length>0 && jobs.map((job)=>{
+          {!jobs && <Loading/>}
+          { jobs && jobs.length>0 && jobs.map((job)=>{
             return <div className={style.job_card} key={job.id}>
 
               <div className={style.job_card_heading}>
@@ -68,7 +70,7 @@ function Jobs() {
               </div>
 
               <div className={style.comment}>{job.comment}</div>
-                <div className={style.posted_by}>posted by <b>{job.appUserEmail}</b></div>
+                <div className={style.posted_by}>posted by <b onClick={()=>{window.location.href = `mailto:${job.appUserEmail}`;}}>{job.appUserEmail}</b></div>
                 <div className={style.see_details} onClick={()=>navigate(`/jobs/${job.id }`)} >See details</div>
             </div>
           })}

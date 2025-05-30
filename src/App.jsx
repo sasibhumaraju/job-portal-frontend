@@ -9,6 +9,7 @@ import Footer from './components/Footer';
 import { getItem } from './utils/storage';
 import Auth from './pages/Auth';
 import Loading from './pages/loading';
+import About from './pages/About';
 
 function App() {
 
@@ -36,17 +37,19 @@ function App() {
       <div className='app'>
 
       { user === undefined? 
-        <Loading/> :
+        null :
       <>
       <div className='home'>
       <Navbar></Navbar>
       <div className='pages'>
+        {/* <Loading/> */}
       <Routes>
 
         <Route path='/' element={<Navigate to="/jobs"/>} />
         <Route path='/jobs' element={<Jobs/>} /> 
         <Route path='/jobs/:jobId' element={<Job/>}/>
         <Route path='/profile/:userID'element={<Profile/>} />
+        <Route path='/about' element={<About/>} /> 
 
         
           { user == null && 

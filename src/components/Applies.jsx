@@ -6,10 +6,11 @@ import { getAppliesByJob, getAppliesByUser } from '../api/applies'
 import { VscGitStashApply } from 'react-icons/vsc'
 import { useNavigate } from 'react-router-dom'
 import { BiMessageSquare } from 'react-icons/bi'
+import Loading from '../pages/loading'
 
 function Applies({userID, jobID}) {
 
-    const [applies, setApplies] = useState([]);
+    const [applies, setApplies] = useState(null);
     const navigate = useNavigate()
 
     useEffect(()=>{
@@ -31,9 +32,10 @@ function Applies({userID, jobID}) {
     <div className={style.applies}>
            <div className={style.heading}>{ userID!=null? "Your job applies":"Applies By Users"}  </div>
                 <div className={style.body}>
-                  {applies.length==0 && <div className={style.none_applied}> 🍐 None applied</div>}
+                  {!applies && <Loading/>}
+                  { applies && applies.length==0 && <div className={style.none_applied}> 🐥 None Jobs Applied...</div>}
                   {
-                    applies.length>0 && applies.map((a,i)=>{
+                    applies &&  applies.length>0 && applies.map((a,i)=>{
 
                         return <> <div className={style.exp_card} >
                                         <>

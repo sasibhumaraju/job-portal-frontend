@@ -12,10 +12,11 @@ import { getJobsByEmployerID } from '../api/jobs'
 import { MdOutlineLocalPostOffice, MdWorkOutline } from 'react-icons/md'
 import { PiBagLight } from 'react-icons/pi'
 import { BiMessageSquare } from 'react-icons/bi'
+import Loading from '../pages/loading'
 
 function JobPosting({userID}) {
 
-    const [jobPostings, setJobPostings] = useState([]);
+    const [jobPostings, setJobPostings] = useState(null);
     const [showAddJobPostingForm, toggleAddJobPostingForm] = useState(false)
     const navigate = useNavigate()
 
@@ -37,8 +38,10 @@ function JobPosting({userID}) {
                   <AddJobPosting toggleAddJobPosting={toggleAddJobPostingForm} mode={"add"} loadJobPostings={loadJobPostings}/>
                 }
                 <div className={style.body}>
+                    {!jobPostings && <Loading/>}
+                    {jobPostings && jobPostings.length==0 && <div className={style.comment}> 🐌 Add Job Postings... </div>}
                     {
-                        jobPostings.length>0 && jobPostings.map((e,i)=>{
+                      jobPostings &&  jobPostings.length>0 && jobPostings.map((e,i)=>{
                             return <> <div className={style.exp_card} key={e.id}>
                                     <>
                                         {/* <div className={style.icon}> <MdWorkOutline size={23} />  </div> */}

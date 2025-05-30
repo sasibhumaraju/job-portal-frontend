@@ -31,7 +31,7 @@ function Navbar() {
         <span className={style.links_container}>
             <NavLink to="/jobs" className={navClass} > <PiBagLight size={18} /> Jobs Alerts</NavLink>
             
-            {/* <NavLink to="/jobs" className={navClass} > <PiBookLight size={18}  /> About</NavLink> */}
+            <NavLink to="/about" className={navClass} > <PiBookLight size={18}  /> About Us</NavLink>
             { user == null && 
             <NavLink to="/auth" className={navClass} > <AiOutlineLogin size={18} />Sign In</NavLink>}
 

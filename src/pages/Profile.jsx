@@ -28,7 +28,7 @@ function Profile() {
    const {userID} = useParams()
    const [user, setUser] = useState(null);
    const [currentUser, setCurrentUser] = useState(null);
-   const [exps,setExps] = useState([]);
+   const [exps,setExps] = useState(null);
    const [showExpForm, toggleExpForm] = useState(false);
    const [showExpEditForm, toggleExpEditForm] = useState([]);
    const navigate = useNavigate();
@@ -109,8 +109,11 @@ function Profile() {
                   <AddExperience toggleExpForm={toggleExpForm} mode={"add"}/>
                 }
                 <div className={style.body}>
+                  {!exps && <Loading/> }
+
+                  {exps && exps.length==0 && <div className={style.comment}> 🥦 No Experience Added!</div> }
                   {
-                    exps.length>0 && exps.map((e,i)=>{
+                   exps && exps.length>0 && exps.map((e,i)=>{
 
                           return <> <div className={style.exp_card} key={e.id}>
 

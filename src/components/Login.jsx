@@ -3,6 +3,7 @@ import style from '../css/auth.module.css';
 import { getUserByEmail } from '../api/users';
 import toast from 'react-hot-toast';
 import { setItem } from '../utils/storage';
+import { FaArrowRight } from 'react-icons/fa6';
 
 function Login({toggleAuth}) {
 
@@ -43,7 +44,7 @@ function Login({toggleAuth}) {
           <input id='email' value={email} onChange={(e)=> setEmail(e.target.value)} title='Enter a valid email address (e.g., user@example.com)' pattern="^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$" type='email' required placeholder='Email'  name='email'></input>
            <label for='pass'>Password</label>
           <input id='pass' value={password} onChange={(e)=> setPassword(e.target.value)} type='password' required placeholder='Password'  name='password'></input>
-          <button type='submit' >Login</button>
+          <button type='submit' >Login  &nbsp; <FaArrowRight /></button>
       </form>
 
        <div className={style.divider}/>

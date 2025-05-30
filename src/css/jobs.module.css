@@ -339,17 +339,22 @@ form {
 }
 .apply {
     width: 90px;
-    /* width: 100%; */
+    /* max-width: 600px;
+    width: 100%; */
+    
+    padding: 15px 15px;
+    margin-top: 30px;
+
     height: 35px;
+    font-size: 14px;
     display: flex;
     justify-content: center;
     align-items: center;
     color: white;
-    font-weight: 700;
-    border-radius: 2px;
+    font-weight: 900;
+    border-radius: 5px;
     cursor: pointer;
     background-color: rgb(92, 27, 134);
-    margin-top: 30px;
 }
 
 .apply_job_form {
@@ -386,6 +391,17 @@ form {
     background-color: white;
     margin: 10px 0px;
     font-style:normal;
+
+     width: calc(100% - 30px);
+    border: none;
+    outline: 1px solid rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
+    height: 33px;
+    padding: 0px 15px;
+    font-size: 14px;
+    color: black;
+    background-color: white;
+    margin: 10px 0px;
 }
 .form_container input:focus {
     width: calc(100% - 30px);
@@ -401,6 +417,16 @@ form {
     color: black;
     background-color: white;
     margin: 10px 0px;
+
+     width: calc(100% - 30px);
+    border: none;
+    outline: 2px solid rgb(92, 27, 134, 0.2);
+    border-radius: 5px;
+    height: 33px;
+    padding: 0px 15px;
+    font-size: 14px;
+    color: black;
+    background-color: white
 }
 .applied {
     width: calc(100% - 160px);

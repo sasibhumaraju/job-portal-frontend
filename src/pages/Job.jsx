@@ -10,6 +10,7 @@ import { getApplyByJobAndUser, postApply } from '../api/applies';
 import Applies from '../components/Applies';
 import { BiMessageSquare } from 'react-icons/bi';
 import { LuShare2 } from 'react-icons/lu';
+import Loading from './loading';
 
 function Job() {
 
@@ -124,6 +125,7 @@ function Job() {
           <IoArrowBack size={25} />
           Go back 
         </div>
+        {!job && <Loading/>}
         {job && <> <div className={style.job_container}>
           
 

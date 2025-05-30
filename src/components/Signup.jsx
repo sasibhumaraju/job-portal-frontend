@@ -3,6 +3,7 @@ import style from '../css/auth.module.css';
 import { getUserByEmail, postUser } from '../api/users';
 import toast from 'react-hot-toast';
 import { setItem } from '../utils/storage';
+import { FaArrowRight } from 'react-icons/fa6';
 
 function Signup({toggleAuth}) {
 
@@ -58,7 +59,7 @@ function Signup({toggleAuth}) {
                       <option value="EMPLOYER">Employer</option>
                     </select>
                     
-                  <button type='submit' >Signup</button>
+                  <button type='submit' >Signup  &nbsp; <FaArrowRight /></button>
               </form>
                <div className={style.divider}/>
    
