@@ -27,28 +27,28 @@ function Login({toggleAuth}) {
   return (
     <div className={style.auth_container}>
 
-      <div className={style.logo}>
-          Job Portal   
-      </div>
-
       <div className={style.header_container}>
         <div className={style.header_text}>
-          Login
+          SIGN IN
         </div>
         <div className={style.tail_text}>
-          Use your job portal account
+          <b onClick={toggleAuth}>  Create an account</b>
         </div>
       </div>
 
+      <div className={style.divider}/>
+
       <form className={style.form_container} onSubmit={logInUser}>
-          <input value={email} onChange={(e)=> setEmail(e.target.value)} title='Enter a valid email address (e.g., user@example.com)' pattern="^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$" type='email' required placeholder='Email'  name='email'></input>
-          <input value={password} onChange={(e)=> setPassword(e.target.value)} type='password' required placeholder='Password'  name='password'></input>
+          <label for='email'>Email Address</label>
+          <input id='email' value={email} onChange={(e)=> setEmail(e.target.value)} title='Enter a valid email address (e.g., user@example.com)' pattern="^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$" type='email' required placeholder='Email'  name='email'></input>
+           <label for='pass'>Password</label>
+          <input id='pass' value={password} onChange={(e)=> setPassword(e.target.value)} type='password' required placeholder='Password'  name='password'></input>
           <button type='submit' >Login</button>
       </form>
 
-      <div className={style.switch_auth}>
-        New to Job Portal? <b onClick={toggleAuth}>  Create an account</b>
-      </div>
+       <div className={style.divider}/>
+       <div className={style.switch_auth}> New to Job Portal? <b onClick={toggleAuth}>   Create an account </b>   </div>
+
     </div>
   )
 }

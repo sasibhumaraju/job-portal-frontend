@@ -5,6 +5,7 @@ import { getItem } from '../utils/storage';
 import logo from "../assets/job.png"
 import { PiBagLight, PiBookLight } from 'react-icons/pi';
 import { RxPerson } from 'react-icons/rx';
+import { AiOutlineLogin } from 'react-icons/ai';
 function Navbar() {
 
     const [user, setUser] = useState(null);
@@ -32,7 +33,7 @@ function Navbar() {
             
             {/* <NavLink to="/jobs" className={navClass} > <PiBookLight size={18}  /> About</NavLink> */}
             { user == null && 
-            <NavLink to="/auth" className={navClass} >Signin</NavLink>}
+            <NavLink to="/auth" className={navClass} > <AiOutlineLogin size={18} />Sign In</NavLink>}
 
             { user !== null && 
             <NavLink to={`/profile/${user.id}`} className={navClass}> <RxPerson size={17} />Profile</NavLink> }

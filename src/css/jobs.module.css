@@ -1,6 +1,5 @@
 .jobs {
     min-height: calc(100vh - 60px);
-    /* height: calc(100vh - 60px); */
     width: calc(100% - 60px);
     padding: 30px 30px;
     background-color: white;
@@ -46,7 +45,7 @@
 }
 
 .header_container {
-    /* background-color: red; */
+   
      background-image: linear-gradient(94.89deg, rgba(235, 240, 245, 1) 43.87%, rgba(247, 248, 250, 1));
 
     display: flex;
@@ -276,38 +275,39 @@ form {
 
 
 .job_page {
-    min-height: 100vh;
+    min-height: calc(100vh - 60px);
+    width: calc(100% - 60px);
+    padding: 30px 30px;
     background-color: white;
-    box-sizing: border-box;
     display: flex;
     flex-direction: column;
-    word-spacing: 2px;
+    position: relative;
+    /* background-color: red; */
 }
 
 .job_container {
-    width: calc(100% - 160px);
+    width: calc(100% - 60px);
     padding: 30px 30px;
-    margin: 50px;
-    margin-bottom: 0px;
     min-height: max-content;
-    box-shadow: rgba(182, 182, 185, 0.25) -2px 2px 0px -1px, rgba(80, 80, 80, 0.3) 1px 1px 3px -1px;
-    border-bottom-width: 1px;
-    border-bottom-style: solid;
-    border-bottom-color: rgb(237, 235, 233);
     background-color: white;
-    gap: 10px;
+    gap: 20px;
     display: flex;
     justify-content: start;
     align-items: start;
     flex-direction: column;
     position: relative;
+    /* background-color: gold; */
+    border-radius: 10px;
+    outline: 1px solid rgba(0, 0, 0, 0.1);
+     background-image: linear-gradient(94.89deg, rgba(235, 240, 245, 0.5) 43.87%, rgba(247, 248, 250, 0.5));
+
 }
 
 .back {
-    width: calc(100% - 160px);
-    padding: 20px 10px;
-    margin: 0px 50px;
+    width: calc(100% - 0px);
+    margin: 0px 0px;
     /* background-color: red; */
+    margin-bottom: 30px;
     display: flex;
     justify-content: start;
     align-items: center;
@@ -320,20 +320,22 @@ form {
 .divider {
     width: 100%;
     height: 1px;
-    background-color: rgb(213, 213, 213);
-    margin: 20px 0px;
+    background-color: rgba(0, 0, 0, 0.1);
+    margin: 10px 0px;
 }
 .designation_in_job {
     font-size: 25px;
 }
 .overview {
     font-weight: 600;
-    font-size: 17px;
+    font-weight: 900;
+    font-size: 16px;
+    margin-bottom: 10px;
 }
 .terms {
-     font-weight: 500;
+    font-weight: normal;
     font-size: 14px;
-    font-style: italic;
+    /* font-style: italic; */
 }
 .apply {
     width: 90px;
@@ -412,10 +414,9 @@ form {
     cursor: pointer;
 }
 .job_applies {
-    width: calc(100% - 100px);
+    width: calc(100% - 0px);
     padding: 0px 0px;
-    margin:  50px;
-    margin-top: 10px;
+    margin-top: 20px;
     min-height: max-content;
     background-color: white;
     gap: 10px;
@@ -427,5 +428,34 @@ form {
     display: flex;
     justify-content: start;
     align-items: center;
+}
+
+.delete_job {
+    font-weight: 500;
+    width: 100%;
+    max-width: 200px;
+    padding: 15px 15px;
+    border-radius: 10px;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(255, 255, 255);
+    color: rgb(0, 0, 0);
+    font-size: 15px;
+    word-spacing: 3px;
+    cursor: pointer;
+    margin-top: 18px;
+    font-weight: bold;
+    outline: 1px solid rgba(0, 0, 0, 0.1);
+
+    height: 35px;
+    font-size: 14px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: 900;
+    border-radius: 5px;
+    cursor: pointer;
 }
 

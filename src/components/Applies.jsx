@@ -5,6 +5,7 @@ import { CgDetailsMore } from 'react-icons/cg'
 import { getAppliesByJob, getAppliesByUser } from '../api/applies'
 import { VscGitStashApply } from 'react-icons/vsc'
 import { useNavigate } from 'react-router-dom'
+import { BiMessageSquare } from 'react-icons/bi'
 
 function Applies({userID, jobID}) {
 
@@ -36,10 +37,10 @@ function Applies({userID, jobID}) {
 
                         return <> <div className={style.exp_card} >
                                         <>
-                                                <div className={style.icon}> <VscGitStashApply size={23} /> </div>
+                            
                                                 <div className={style.body}>
-                                                    { userID && <div className={style.company}> {a.jobPostingDTO.companyName}</div>}
-                                                    { jobID && <div className={style.company}> {a.appUserDTO.name}</div>}
+                                                    { userID && <div className={style.company}> <VscGitStashApply size={18} />  {a.jobPostingDTO.companyName}</div>}
+                                                    { jobID && <div className={style.company}>  <VscGitStashApply size={18} /> {a.appUserDTO.name}</div>}
 
                                                     { userID && <div className={style.role}> {a.jobPostingDTO.designation}</div>}
                                                     { jobID && <div className={style.role}> {a.appUserDTO.email}</div>}

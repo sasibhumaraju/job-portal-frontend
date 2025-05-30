@@ -46,8 +46,10 @@ function JobPosting({userID}) {
                                             <div className={style.company}><BiMessageSquare size={18} /> {e.companyName}</div>
                                             <div className={style.role}> {e.designation}</div>
                                             <div className={style.comment}> { e.comment} </div>
-                                        </div>   
+                                        </div>  
+
                                         <div className={style.details} onClick={()=>navigate(`/jobs/${e.id }`)}  > <CgDetailsMore size={20} />  Details  </div>
+                                        
                                     </>
                                     </div> { (i+1)!=jobPostings.length && <div className={style.divider}/>} </>})
 

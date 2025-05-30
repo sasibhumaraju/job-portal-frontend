@@ -1,13 +1,15 @@
 import React, { useEffect, useState } from 'react'
 import style from '../css/jobs.module.css'
 import { useNavigate, useParams } from 'react-router-dom'
-import { getJobByID } from '../api/jobs';
+import { deleteJob, getJobByID } from '../api/jobs';
 import { IoArrowBack } from "react-icons/io5";
 import { HiOutlineOfficeBuilding } from 'react-icons/hi';
 import { getItem } from '../utils/storage';
 import toast from 'react-hot-toast';
 import { getApplyByJobAndUser, postApply } from '../api/applies';
 import Applies from '../components/Applies';
+import { BiMessageSquare } from 'react-icons/bi';
+import { LuShare2 } from 'react-icons/lu';
 
 function Job() {
 
@@ -41,6 +43,14 @@ function Job() {
         u == null? setUser(null) : setUser(u);
     }
 
+    const copyLink = (jobName,jobId) => {
+        navigator.clipboard.writeText(`${URL}/jobs/${jobId}`).then(() => {
+          toast(`${jobName} Link Copied to Clip Board!`, { icon: '🙈', replace:true,   style: {  borderRadius: '10px', background: '#333',  color: '#fff', fontSize: 14 }, });
+        }).catch(err => {
+          toast(`Failed to Copy Link!`, { icon: '😭', replace:true,   style: {  borderRadius: '10px', background: '#333',  color: '#fff', fontSize: 14 }, });
+        });
+     }
+
     const checkIsAlredyApplied = async (u,j, mode)=>{
          
           if( u?.role=="EMPLOYER") {  
@@ -59,6 +69,16 @@ function Job() {
             if(mode=="I") toast(`You already applied for this job`, {  icon: "✅",style: {borderRadius: '10px', background: '#333', color: '#fff',fontSize: 14},});
           }
           
+    }
+
+    const deleteThisJob = async () => {
+      const res = await deleteJob(jobId);
+      if(res == "") {
+        toast(`Job Deleted Successfully`, {  icon: "✅",style: {borderRadius: '10px', background: '#333', color: '#fff',fontSize: 14},});
+        navigate("/jobs");
+      } else {
+        toast(`Failed to Delete Job`, {  icon: "😞",style: {borderRadius: '10px', background: '#333', color: '#fff',fontSize: 14},});
+      }
     }
 
 
@@ -106,20 +126,32 @@ function Job() {
         </div>
         {job && <> <div className={style.job_container}>
           
-          <div className={style.designation_in_job}>{job.designation}</div>
-          <div className={style.company_name}> <HiOutlineOfficeBuilding /> {job.companyName}</div>
+
+           <div className={style.job_card_heading}>
+              <BiMessageSquare size={40} /> 
+              <div className={style.job_card_heading_tail}>
+                <div className={style.designation}>{job.designation}</div>
+                <div className={style.company_name}>{job.companyName}</div>
+              </div>
+              <div className={style.share} onClick={()=>copyLink(job.designation,job.id)}><LuShare2 size={23} /></div>
+          </div>
           <div className={style.posted_by}>posted by <b>{job.appUserEmail}</b></div>
           
           <div className={style.divider}/>
 
-          <div className={style.overview}>Overview</div>
-          <div className={style.comment}>{job.comment}</div>
+          <div>
+              <div className={style.overview}>Requirements</div>
+              <div className={style.comment}>{job.comment}</div>
+          </div>
 
           <div className={style.divider}/>
 
-          <p className={style.terms}>
-            By submitting your application for employment, you acknowledge and agree that all information provided is accurate and complete to the best of your knowledge. You authorize the company to verify any information included in your application and to conduct background checks as necessary. Submission of false or misleading information may result in disqualification from the recruitment process or termination of employment if discovered at a later date. Your personal data will be handled in accordance with applicable data protection laws and used solely for recruitment purposes. Applying for a position does not guarantee employment or interview.
-          </p>
+          <div>
+              <div className={style.overview}>Terms & Conditions</div>
+              <div className={style.terms}>
+                By submitting your application for employment, you acknowledge and agree that all information provided is accurate and complete to the best of your knowledge. You authorize the company to verify any information included in your application and to conduct background checks as necessary. Submission of false or misleading information may result in disqualification from the recruitment process or termination of employment if discovered at a later date. Your personal data will be handled in accordance with applicable data protection laws and used solely for recruitment purposes. Applying for a position does not guarantee employment or interview.
+              </div>
+          </div>
            <p className={style.terms}><b>Note:</b> Please login to job portal as <b> Job Seeker</b> before applying for any job and an <b>Employer </b>can not apply to the jobs. </p>
          
           
@@ -133,7 +165,13 @@ function Job() {
 
             {!showApplyForm && user?.role==="JOB_SEEKER" &&
             <p className={style.applied}>You already applied for this job</p>}
+
+             {user?.role==="EMPLOYER" && user?.id==job.appUserID &&
+       
+          <button className={style.delete_job} onClick={deleteThisJob}>Remove This Job</button>
+       }
         </div>
+
         {user?.role==="EMPLOYER" && user?.id==job.appUserID &&
         <div className={style.job_applies}>
           <Applies jobID={job.id}/>

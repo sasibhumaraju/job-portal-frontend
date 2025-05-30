@@ -44,7 +44,7 @@ const putJob = async (jobPosting) => {
 
 const deleteJob = async (jobId) => {
     console.log("->>> deleteJob called..")
-    const res = await axios.delete(`${URL}/api/v1/job-postings/${jobPosting.id}`)
+    const res = await axios.delete(`${URL}/api/v1/job-postings/${jobId}`)
     console.log(res.data)
     return res.data
 }

@@ -138,10 +138,10 @@ function Profile() {
               {
                 currentUser && currentUser.id == userID && user.role === "JOB_SEEKER" && <Applies userID={user.id}/>
               }
+
               {
                 currentUser && currentUser.id == userID &&  user.role === "EMPLOYER" && <JobPosting userID={user.id}/>
               }
-              
 
             </div>
         </div>
