@@ -106,8 +106,13 @@
   font-weight: bold;
 }
  .comment {
-  font-size: 14px;
-  font-weight: normal;
+    font-weight: normal;
+    font-size: 14px;
+     display: -webkit-box;
+    -webkit-line-clamp: 3;      /* Number of lines */
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+
 }
 .exp_card .edit {
   display: flex;

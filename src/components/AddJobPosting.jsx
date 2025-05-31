@@ -7,7 +7,7 @@ import { deleteJob, postJob, putJob } from '../api/jobs';
 
 function AddJobPosting({toggleAddJobPosting, toggleEditJobPosting, jobPostingObject, mode, loadJobPostings}) {
 
-    const [jobPosting, setJobPosting] = useState({"id":null,"appUserID":"", "appUserEmail":"", "companyName":"", "designation":"", "comment":""})
+    const [jobPosting, setJobPosting] = useState({"id":null,"appUserID":"", "appUserEmail":"", "companyName":"", "designation":"", "comment":"", "jobLink":null})
 
     useEffect(()=>{
         if(mode=="edit") setJobPosting(jobPostingObject)
@@ -55,8 +55,10 @@ function AddJobPosting({toggleAddJobPosting, toggleEditJobPosting, jobPostingObj
        { mode=="edit" && <div className={style.delete} onClick={()=>deleteJobPosting(jobPostingObject.id)}> <MdOutlineDeleteOutline size={20} /> Delete</div>}
         <form className={style.form_container} onSubmit={onSubmit}>
             <input required pattern="^[a-zA-Z0-9\s.,&'-]{2,50}$"  title="Company name should be 2-50 characters and can include letters, numbers, and symbols like .,&'-" type='text' name='company' id='company' placeholder='Enter job posting company name' value={jobPosting.companyName} onChange={(e)=>{ setJobPosting({...jobPosting, "companyName": e.target.value })}} ></input>
-            <input required pattern="^[a-zA-Z\s]{2,50}$" title="Designation should be 2-50 letters only" type='text' name='designation' id='designation' placeholder='Enter job posting designation name' value={jobPosting.designation} onChange={(e)=>{ setJobPosting({...jobPosting, "designation": e.target.value })}} ></input>
-            <input required pattern="^.{10,300}$"  title="Comment should be between 10 and 300 characters" type='text' name='comment' id='comment' placeholder='Type your expectations for the role' value={jobPosting.comment} onChange={(e)=>{ setJobPosting({...jobPosting, "comment": e.target.value })}} ></input>
+            <input required pattern="^[a-zA-Z0-9\s\-\+\/\&\.\_]{2,50}$" title="Designation should be 2-50 letters only" type='text' name='designation' id='designation' placeholder='Enter job posting designation name' value={jobPosting.designation} onChange={(e)=>{ setJobPosting({...jobPosting, "designation": e.target.value })}} ></input>
+            <textarea id="requirements" name="comment" rows="6" required  maxLength="1500"  pattern="[\s\S]{10,1500}"  placeholder="List job requirements here (10–1500 characters)..." value={jobPosting.comment} onChange={(e)=>{ setJobPosting({...jobPosting, "comment": e.target.value })}} ></textarea>
+            
+            <input pattern='https?:\/\/[^\s"]*?(jobs|careers)[^\s"]*' title="Job url (optional)" type='url' name='link' id='link' placeholder='Job link (optional)' value={jobPosting.jobLink} onChange={(e)=>{ setJobPosting({...jobPosting, "jobLink": e.target.value })}} ></input>
 
             <div className={style.buttons}>
                 <button className={style.button} type='submit' > { mode=="add"? "Add Job Posting" : "Update Job Posting"}</button>

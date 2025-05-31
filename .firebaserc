@@ -1,7 +1,9 @@
 {
   "projects": {
     "default": "job-portal-360",
-    "prod": "joobpoortal"
+    "prod": "joobpoortal",
+    "jobs": "jobspoortal",
+    "user": "jobspoortal"
   },
   "targets": {},
   "etags": {}

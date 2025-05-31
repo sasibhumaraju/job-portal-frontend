@@ -38,6 +38,25 @@
     color: black;
     background-color: white
 }
+.form_container textarea {
+    width: calc(100% - 0px);
+    border: none;
+    outline: 1px solid rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
+    min-height: 33px;
+    height: 90px; /* You may want to override this below for textarea */
+    max-height: 200px;
+    padding: 8px 15px;
+    font-size: 14px;
+    color: black;
+    background-color: white;
+    margin: 10px 0px;
+    resize: vertical; /* Optional: lets users resize textarea vertically */
+    box-sizing: border-box;
+}
+.form_container textarea:focus {
+    outline: 2px solid rgba(92, 27, 134, 0.2);
+}
 
 .form_container .buttons {
     display: flex;

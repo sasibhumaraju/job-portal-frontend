@@ -85,6 +85,10 @@ function Job() {
 
     const applyJob = async (e) => {
       e.preventDefault();
+      if(job.jobLink !== null) {
+        window.open(`${job.jobLink}`, "_blanck")
+        return;
+      }
 
        const u = await getItem("user")
         u == null? setUser(null) : setUser(u);
@@ -143,7 +147,7 @@ function Job() {
 
           <div>
               <div className={style.overview}>Requirements</div>
-              <div className={style.comment}>{job.comment}</div>
+              <div className={` ${style.pre_wrap}`}>{job.comment}</div>
           </div>
 
           <div className={style.divider}/>
@@ -159,9 +163,9 @@ function Job() {
           
            { showApplyForm && <div className={style.apply_job_form}>
                     <form className={style.form_container} onSubmit={applyJob} >
-                        <input required value={expectedSalary} onChange={(e)=>setExpectedSalary(e.target.value)} pattern="^[0-9]{1,2}$" title="Enter expected salary in lakhs between 0 and 99" type='text' name='yearsWorked' id='yearsWorked' placeholder='Enter your expected salary in lakhs'   ></input>
-                        <input required value={comment} onChange={(e)=>setComment(e.target.value)} pattern="^.{10,300}$"  title="Comment should be between 10 and 300 characters" type='text' name='comment' id='comment' placeholder='Type more about your work'  ></input>
-                     <button className={style.apply} type='submit'  >Apply</button>
+                       {!job.jobLink && <input required value={expectedSalary} onChange={(e)=>setExpectedSalary(e.target.value)} pattern="^[0-9]{1,2}$" title="Enter expected salary in lakhs between 0 and 99" type='text' name='yearsWorked' id='yearsWorked' placeholder='Enter your expected salary in lakhs'   ></input>}
+                      {!job.jobLink &&  <input required value={comment} onChange={(e)=>setComment(e.target.value)} pattern="^.{10,300}$"  title="Comment should be between 10 and 300 characters" type='text' name='comment' id='comment' placeholder='Type more about your work'  ></input>}
+                     <button className={style.apply} type='submit'  > {job.jobLink === null? "Apply" : `Apply by ${job.companyName} Site` }</button>
                     </form>
             </div>}
 
@@ -174,7 +178,7 @@ function Job() {
        }
         </div>
 
-        {user?.role==="EMPLOYER" && user?.id==job.appUserID &&
+        { !job.jobLink && user?.role==="EMPLOYER" && user?.id==job.appUserID &&
         <div className={style.job_applies}>
           <Applies jobID={job.id}/>
         </div>}
