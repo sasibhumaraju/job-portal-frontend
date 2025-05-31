@@ -25,6 +25,7 @@ function Jobs() {
 
   const onClicked = (e) => {
       e.preventDefault();
+      document.activeElement.blur();
       fetchJobs()
   }
 

@@ -158,3 +158,45 @@ label {
     /* margin-bottom: 8px; */
     font-weight: 900;
 }
+
+
+
+
+
+
+/* ---------------- MOBILE ---------------------- */
+
+@media (max-width: 749px) {
+    .auth {
+        min-height: calc(100vh - 120px);
+        width: calc(100% - 30px);
+        margin-bottom: 90px;
+        background-color: white;
+        padding: 15px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+    .auth_container {
+        max-width: calc(600px - 40px);
+        width: calc(100% - 40px);
+        padding: 20px;
+        min-height: max-content;
+        gap: 10px;
+        display: flex;
+        justify-content: start;
+        flex-direction: column;
+        position: relative;
+        align-items: center;
+        border-radius: 10px;
+        outline: 1px solid rgba(0, 0, 0, 0.1);
+    }
+    .divider {
+        width: 100%;
+        border-radius: 10px;
+        outline: 0.1px solid rgba(0, 0, 0, 0.1);
+        margin: 20px 0px;
+    }
+
+}

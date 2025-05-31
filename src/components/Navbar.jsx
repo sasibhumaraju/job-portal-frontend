@@ -9,11 +9,19 @@ import { AiOutlineLogin } from 'react-icons/ai';
 function Navbar() {
 
     const [user, setUser] = useState(null);
+     const [isTooSmall, setIsTooSmall] = useState(window.innerWidth < 750);
     const navigate = useNavigate()
     
     useEffect(()=>{
         const u = getItem("user")
         u == null? setUser(null) : setUser(u);
+          const handleResize = () => {
+      setIsTooSmall(window.innerWidth < 750);
+    };
+     window.addEventListener('resize', handleResize);
+
+    // Clean up listener on unmount
+    return () => window.removeEventListener('resize', handleResize);
     },[])
 
     const navClass = ({isActive}) => {
@@ -29,14 +37,14 @@ function Navbar() {
             </span>
         </span>
         <span className={style.links_container}>
-            <NavLink to="/jobs" className={navClass} > <PiBagLight size={18} /> Jobs Alerts</NavLink>
+            <NavLink to="/jobs" className={navClass} > <div className={style.icon}><PiBagLight size={ isTooSmall? 20:18} /></div>  <div className={style.text}>{ isTooSmall? "Jobs" : "Jobs Alerts"}</div> </NavLink>
             
-            <NavLink to="/about" className={navClass} > <PiBookLight size={18}  /> About Us</NavLink>
+            <NavLink to="/about" className={navClass} > <div  className={style.icon}><PiBookLight size={isTooSmall? 20:18}  /></div >  <div className={style.text}>{isTooSmall? "About" : "About Us"}</div></NavLink>
             { user == null && 
-            <NavLink to="/auth" className={navClass} > <AiOutlineLogin size={18} />Sign In</NavLink>}
+            <NavLink to="/auth" className={navClass} > <div className={style.icon}> <AiOutlineLogin size={isTooSmall? 20:18} /></div ><div className={style.text}>Sign In</div></NavLink>}
 
             { user !== null && 
-            <NavLink to={`/profile/${user.id}`} className={navClass}> <RxPerson size={17} />Profile</NavLink> }
+            <NavLink to={`/profile/${user.id}`} className={navClass}> <div className={style.icon}><RxPerson size={isTooSmall? 19:17} /></div> <div className={style.text}>Profile</div></NavLink> }
 
         </span>
     </nav>

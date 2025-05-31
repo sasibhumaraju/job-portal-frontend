@@ -5,17 +5,7 @@
   background-color: rgb(255, 255, 255);
   overflow: scroll;
   color: black;
-}
-
-.small_screen {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 20px;
-  background-color: black;
-  height: 100vh;
-  width: calc(100vw - 40px);
-  font-weight: 100;
+  position: relative;
 }
 
 .home {
@@ -29,4 +19,10 @@
 .pages {
   width: calc(100vw - 250px);
   overflow-y: scroll;
+}
+
+@media (max-width: 749px) {
+  .pages {
+    width: calc(100vw - 0px);
+  }
 }

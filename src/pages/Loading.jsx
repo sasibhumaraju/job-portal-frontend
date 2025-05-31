@@ -5,7 +5,7 @@ function Loading() {
     const dummyList = ["1","2","3","4","5"]
   return (
     <div className={style.loading}>
-       <div class={style.spinner}></div>
+       <div className={style.spinner}></div>
     </div>
   )
 }
