@@ -51,13 +51,14 @@ function AddExperience({toggleExpForm, toggleExpEditForm, expObject, mode, loadU
 
   return (
     <div className={style.add_experience}>
-        <div className={style.type_heading}> {mode=="edit"? "Edit Experience 👇" : "Add New Experience 👇" }</div>
+                 <div className={style.type_heading}> {mode=="edit"? "Edit Your Experience 👇" : "Add New Experience 👇" }</div>
        { mode=="edit" && <div className={style.delete} onClick={()=>deleteExp(expObject.id)}> <MdOutlineDeleteOutline size={20} /> Delete</div>}
         <form className={style.form_container} onSubmit={onSubmit}>
             <input required pattern="^[a-zA-Z0-9\s.,&'-]{2,50}$"  title="Company name should be 2-50 characters and can include letters, numbers, and symbols like .,&'-" type='text' name='company' id='company' placeholder='Enter company name' value={wExp.companyName} onChange={(e)=>{ setWExp({...wExp, "companyName": e.target.value })}} ></input>
-            <input required pattern="^[a-zA-Z\s]{2,50}$" title="Designation should be 2-50 letters only" type='text' name='designation' id='designation' placeholder='Enter designation name' value={wExp.designation} onChange={(e)=>{ setWExp({...wExp, "designation": e.target.value })}} ></input>
+            <input required pattern="^[a-zA-Z0-9\s\-\+\/\&\.\_]{2,50}$" title="Designation should be 2-50 letters only" type='text' name='designation' id='designation' placeholder='Enter designation name' value={wExp.designation} onChange={(e)=>{ setWExp({...wExp, "designation": e.target.value })}} ></input>
             <input required pattern="^[0-9]{1,2}$" title="Enter number of years between 0 and 99" type='text' name='yearsWorked' id='yearsWorked' placeholder='Number of years worked' value={wExp.yearsWorked} onChange={(e)=>{ setWExp({...wExp, "yearsWorked": e.target.value })}} ></input>
-            <input required pattern="^.{10,300}$"  title="Comment should be between 10 and 300 characters" type='text' name='comment' id='comment' placeholder='Type your work in the role' value={wExp.comment} onChange={(e)=>{ setWExp({...wExp, "comment": e.target.value })}} ></input>
+            {/* <input required pattern="^.{10,300}$"  title="Comment should be between 10 and 300 characters" type='text' name='comment' id='comment' placeholder='Type your work in the role' value={wExp.comment} onChange={(e)=>{ setWExp({...wExp, "comment": e.target.value })}} ></input> */}
+            <textarea id="comment" name="comment" rows="6" required  maxLength="1500"  pattern="[\s\S]{10,1500}"  placeholder="List your work in the company here (10–1500 characters)..." value={wExp.comment} onChange={(e)=>{ setWExp({...wExp, "comment": e.target.value })}} ></textarea>
 
             <div className={style.buttons}>
                 <button className={style.button} type='submit' > { mode=="add"? "Add Experience" : "Update Experience"}</button>

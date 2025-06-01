@@ -197,6 +197,7 @@
  .comment {
   font-size: 14px;
   font-weight: normal;
+  /* white-space: pre-wrap; */
 }
 .exp_card .edit {
   display: flex;

@@ -141,7 +141,7 @@ function Job() {
               </div>
               <div className={style.share} onClick={()=>copyLink(job.designation,job.id)}><LuShare2 size={23} /></div>
           </div>
-          <div className={style.posted_by}>posted by <b>{job.appUserEmail}</b></div>
+          <div className={style.posted_by} onClick={()=>{window.location.href = `mailto:${job.appUserEmail}`;}}>posted by <b>{job.appUserEmail}</b></div>
           
           <div className={style.divider}/>
 
