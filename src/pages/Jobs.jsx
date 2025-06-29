@@ -1,6 +1,5 @@
 import { useEffect, useState } from 'react'
 import style from "../css/jobs.module.css"
-import f from "../assets/f.jpg"
 import { getJobs, getJobsByKeyword } from '../api/jobs'
 import { HiOutlineOfficeBuilding } from "react-icons/hi";
 import { Outlet, useNavigate } from 'react-router-dom'

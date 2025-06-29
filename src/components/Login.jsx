@@ -4,6 +4,8 @@ import { getUserByEmail } from '../api/users';
 import toast from 'react-hot-toast';
 import { setItem } from '../utils/storage';
 import { FaArrowRight } from 'react-icons/fa6';
+import { authenticateUser } from '../api/auth';
+import Constants from '../constants';
 
 function Login({toggleAuth}) {
 
@@ -13,15 +15,13 @@ function Login({toggleAuth}) {
   const logInUser = async (e) => {
       e.preventDefault();
       const u = await getUserByEmail(email)
-      if( u=="") toast(`${email} user doesn't exists!`, { icon: '🤨',   style: {  borderRadius: '10px', background: '#333',  color: '#fff', fontSize: 14 }, });
-      else {
-        if(u.password == password.trim()) {
-          setItem("user",u);
-          toast(`${email} logged in!`, {  icon: "✅",style: {borderRadius: '10px', background: '#333', color: '#fff',fontSize: 14},});
-          const timeOut = setTimeout(()=>{window.location.reload(); clearTimeout(timeOut)},1500)
-        } else {
-           toast(`incorrect password`, { icon: '😑',   style: {  borderRadius: '10px', background: '#333',  color: '#fff', fontSize: 14 }, });
-        }
+      if(u === null) { toast(`${user.email} user doesn't exists!`, { icon: '🤨',   style: {  borderRadius: '10px', background: '#333',  color: '#fff', fontSize: 14 }, }); return;}
+      var status = await authenticateUser({email, password})
+      if(status === Constants.SUCCESS) {
+        toast(`${email} logged in!`, {  icon: "✅",style: {borderRadius: '10px', background: '#333', color: '#fff',fontSize: 14},});
+        const timeOut = setTimeout(()=>{window.location.reload(); clearTimeout(timeOut)},1500)
+      } else {
+          toast(`incorrect credentials`, { icon: '😑',   style: {  borderRadius: '10px', background: '#333',  color: '#fff', fontSize: 14 }, });
       }
   }
 

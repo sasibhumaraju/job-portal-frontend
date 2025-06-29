@@ -4,28 +4,20 @@ import { getUserByEmail, postUser } from '../api/users';
 import toast from 'react-hot-toast';
 import { setItem } from '../utils/storage';
 import { FaArrowRight } from 'react-icons/fa6';
+import { registerUser } from '../api/auth';
 
 function Signup({toggleAuth}) {
 
   const [user, setUser] = useState({"name":"", "email":"","password":"","phone":"","role":"JOB_SEEKER"});
 
   const submitUser = async (e) => {
-     e.preventDefault();
-
-      const u = await getUserByEmail(user.email)
-      if( u !== "" ) {
-
-        toast(`${user.email} is already having account`, { icon: '🤨',   style: {  borderRadius: '10px', background: '#333',  color: '#fff', fontSize: 14 }, });
-      
-      } else {
-
-          const u = await postUser(user);
-           if( u !== "" ) {
-              toast(`${user.email} account created`, {  icon: "✅",style: {borderRadius: '10px', background: '#333', color: '#fff',fontSize: 14},});
-              setItem("user",u);
-              const timeOut = setTimeout(()=>{window.location.reload(); clearTimeout(timeOut)},1500)
-           }
-      }
+      e.preventDefault();
+      var u1 = await getUserByEmail(user.email)
+      if(u1 !== null) { toast(`${user.email} is already having account`, { icon: '🤨',   style: {  borderRadius: '10px', background: '#333',  color: '#fff', fontSize: 14 }, }); return;}
+      var status = await registerUser(user) ;
+      if( status === Constants.FAILED) { toast(`Failed to to create account for ${user.email}`, { icon: '🤨',   style: {  borderRadius: '10px', background: '#333',  color: '#fff', fontSize: 14 }, }); return;} 
+      toast(`${user.email} account created`, {  icon: "✅",style: {borderRadius: '10px', background: '#333', color: '#fff',fontSize: 14},});
+      const timeOut = setTimeout(()=>{window.location.reload(); clearTimeout(timeOut)},1500)
   }
 
 

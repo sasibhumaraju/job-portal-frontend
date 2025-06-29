@@ -39,20 +39,12 @@ function Profile() {
       },[showExpForm,userID])
 
   const loadUser = async() => {
-    const u = await getItem("user")
-    setCurrentUser(u);
-
-
-    if(u != null && u.id == userID) {
-      setUser(u);
-      loadExp(u.id)
-      console.log("local ->> ", u)
-    } else {
       const u1 = await getUserByID(userID);
-       console.log("remote ->> ", u1)
-      setUser(u1);
-      loadExp(u1.id);
-    }
+      if(u1 == null) navigate("/auth")
+      if( u1 != null ) setUser(u1);
+      const u2 = await getItem("user");
+      if( u2 != null) setCurrentUser(u2)
+      if( u1 != null ) loadExp(u1.id);
   }
 
   const loadExp = async(userID) => {

@@ -17,7 +17,6 @@ function App() {
     const [isTooSmall, setIsTooSmall] = useState(window.innerWidth < 750);
 
    
-
   useEffect(()=>{
     const u = getItem("user")
     u == null? setUser(null) : setUser(u);

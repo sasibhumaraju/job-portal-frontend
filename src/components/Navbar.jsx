@@ -9,20 +9,25 @@ import { AiOutlineLogin } from 'react-icons/ai';
 function Navbar() {
 
     const [user, setUser] = useState(null);
-     const [isTooSmall, setIsTooSmall] = useState(window.innerWidth < 750);
+    const [isTooSmall, setIsTooSmall] = useState(window.innerWidth < 750);
     const navigate = useNavigate()
     
     useEffect(()=>{
-        const u = getItem("user")
-        u == null? setUser(null) : setUser(u);
-          const handleResize = () => {
-      setIsTooSmall(window.innerWidth < 750);
-    };
-     window.addEventListener('resize', handleResize);
+        load()
+        const handleResize = () => {
+        setIsTooSmall(window.innerWidth < 750);
+        };
+    window.addEventListener('resize', handleResize);
 
     // Clean up listener on unmount
     return () => window.removeEventListener('resize', handleResize);
     },[])
+
+    const load = async () => {
+        const u = await getItem("user")
+        u == null? setUser(null) : setUser(u);
+        // console.log(u)
+    }
 
     const navClass = ({isActive}) => {
         if(isActive) return style.active;

@@ -24,6 +24,8 @@ function Applies({userID, jobID}) {
 
         if(jobID!=null)
             list = await getAppliesByJob(jobID)
+
+        console.log("loaded applies ->", list)
         setApplies(list)
     }
 
@@ -35,7 +37,7 @@ function Applies({userID, jobID}) {
                   {!applies && <Loading/>}
                   { applies && applies.length==0 && <div className={style.none_applied}> 🐥 None Jobs Applied...</div>}
                   {
-                    applies &&  applies.length>0 && applies.map((a,i)=>{
+                    applies!==null &&  applies.length>0 && applies.map((a,i)=>{
 
                         return <> <div className={style.exp_card} >
                                         <>
