@@ -5,6 +5,7 @@ import toast from 'react-hot-toast';
 import { setItem } from '../utils/storage';
 import { FaArrowRight } from 'react-icons/fa6';
 import { registerUser } from '../api/auth';
+import Constants from '../constants';
 
 function Signup({toggleAuth}) {
 
